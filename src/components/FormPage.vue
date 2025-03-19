@@ -6,8 +6,8 @@
           <label for="city">Город:</label>
           <select id="city" v-model="form.city">
             <option disabled value="">Выберите город</option>
-            <option value="moscow">Москва</option>
-            <option value="spb">Санкт-Петербург</option>
+            <option >Москва</option>
+            <option >Санкт-Петербург</option>
           </select>
         </div>
   
