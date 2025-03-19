@@ -13,7 +13,6 @@ export const formStore = defineStore('form', {
     actions: {
         saveFormData(data) {
           this.formData = data; 
-          console.log('Данные сохранены в хранилище', this.formData);
         }
       }
     });
