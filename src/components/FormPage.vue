@@ -31,8 +31,8 @@
           <label for="team">Бригада:</label>
           <select id="team" v-model="form.team">
             <option disabled value="">Выберите бригаду</option>
-            <option value="team1">Бригада 1</option>
-            <option value="team2">Бригада 2</option>
+            <option >Бригада 1</option>
+            <option >Бригада 2</option>
           </select>
         </div>
   
@@ -40,8 +40,8 @@
           <label for="shift">Смена:</label>
           <select id="shift" v-model="form.shift">
             <option disabled value="">Выберите смену</option>
-            <option value="shift1">Смена 1</option>
-            <option value="shift2">Смена 2</option>
+            <option >Смена 1</option>
+            <option >Смена 2</option>
           </select>
         </div>
   
@@ -54,7 +54,7 @@
   import { ref, computed } from 'vue';
   import { formStore } from '../stores/formStore';
   import { useRouter } from 'vue-router';
-  
+
   const router = useRouter(); 
   const formData = formStore()
   

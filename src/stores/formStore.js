@@ -13,6 +13,7 @@ export const formStore = defineStore('form', {
     actions: {
         saveFormData(data) {
           this.formData = data; 
+          
         }
       }
     });
