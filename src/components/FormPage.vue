@@ -1,15 +1,16 @@
 <template>
     <div>
-      <h1>Форма ввода данных</h1>
-      <form @submit.prevent="submit">
-        <div>
-          <label for="city">Город:</label>
-          <select id="city" v-model="form.city">
-            <option disabled value="">Выберите город</option>
-            <option value="moscow">Москва</option>
-            <option value="spb">Санкт-Петербург</option>
-          </select>
-        </div>
+        <h1>Форма ввода данных</h1>
+    <form @submit.prevent="submit">
+      <div>
+        <label for="city">Город:</label>
+        <select id="city" v-model="form.city">
+          <option disabled value="">Выберите город</option>
+          <option v-for="city in cities" :key="city">
+            {{ city }}
+          </option>
+        </select>
+      </div>
   
         <div>
           <label for="workshop">Цех:</label>
@@ -60,27 +61,29 @@
   
   const form= computed(() => formData.formData);
 
-  const cities = {
-    moscow: ['Цех 1', 'Цех 2'],
-    spb: ['Цех A', 'Цех B']
-  };
+  const cities = ['Москва', 'Санкт-Петербург'];
+
+  const workshopsData = {
+  'Москва': ['Цех 1', 'Цех 2'],
+  'Санкт-Петербург': ['Цех A', 'Цех B']
+};
   
-  const employeesData = {
-    'moscow-Цех 1': ['Сотрудник 1', 'Сотрудник 2'],
-    'moscow-Цех 2': ['Сотрудник 3', 'Сотрудник 4'],
-    'spb-Цех A': ['Сотрудник A1', 'Сотрудник A2'],
-    'spb-Цех B': ['Сотрудник B1', 'Сотрудник B2']
-  };
+const employeesData = {
+  'Москва-Цех 1': ['Сотрудник 1', 'Сотрудник 2'],
+  'Москва-Цех 2': ['Сотрудник 3', 'Сотрудник 4'],
+  'Санкт-Петербург-Цех A': ['Сотрудник A1', 'Сотрудник A2'],
+  'Санкт-Петербург-Цех B': ['Сотрудник B1', 'Сотрудник B2']
+};
   
-  const workshops = computed(() => {
-    return cities[form.value.city] || [];
-  });
+const workshops = computed(() => {
+  return workshopsData[form.value.city] || [];
+});
   
-  const employees = computed(() => {
-    return employeesData[`${form.value.city}-${form.value.workshop}`] || [];
-  });
+const employees = computed(() => {
+  return employeesData[`${form.value.city}-${form.value.workshop}`] || [];
+});
  
-  const submit = () => {
+const submit = () => {
   formData.saveFormData(form.value); 
   router.push({ name: 'SavedPage' });
 };
